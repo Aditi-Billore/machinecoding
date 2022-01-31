@@ -1,6 +1,6 @@
 **Problem statement** 
 
- Accepts coins of 1,5,10,25 Cents i.e. penny, nickel, dime, and quarter.
+ Accepts coins of 10,20,50,100.
  
  Allow user to select products Coke(30), Pepsi(20), Redbull(40)
  
