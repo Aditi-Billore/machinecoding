@@ -1,5 +1,7 @@
 package com.javatech.vendingmachine;
 
+import java.util.Scanner;
+
 import com.javatech.vendingmachine.entities.Coin;
 import com.javatech.vendingmachine.entities.Product;
 import com.javatech.vendingmachine.helper.Inventory;
@@ -12,6 +14,12 @@ public class VendingMachineImpl implements VendingMachine {
 	int totalSales = 0;
 	int MAX_VALUE = 5;
 	
+	
+	public VendingMachineImpl() {
+		super();
+		this.initialize();
+	}
+
 	@Override
 	public void initialize() {
 		for(Coin c: Coin.values()) {
@@ -119,6 +127,66 @@ public class VendingMachineImpl implements VendingMachine {
 	
 	public boolean isPaymentFull() {
 		return currentAmount>=currentProduct.getPrice();
+	}
+
+	@Override
+	public Product showProductMenu(Scanner sc) {
+		int result;		
+		System.out.println("PRESS 1: To Select COKE");
+		System.out.println("PRESS 2: To Select PEPSI");
+		System.out.println("PRESS 3: To Select REDBULL");
+		
+		result = sc.nextInt();
+		if(result == 1) {
+			return Product.COKE;
+		}
+		else if(result == 2) {
+			return Product.PEPSI;
+		}
+		else if(result == 3) {
+			return Product.REDBULL;
+		}
+		return null;
+	}
+
+	@Override
+	public int showMenu(Scanner sc) {
+		int result = 0;
+		
+		System.out.println("PRESS 1: To Select a product");
+		System.out.println("PRESS 2: To Add Cash");
+		System.out.println("PRESS 3: To Retrive product");
+		System.out.println("PRESS 4: To Reset");
+		System.out.println("PRESS 5: To Exit");
+		
+//		to add return and exchange functionality in future
+		
+		result = sc.nextInt();
+		return result;
+	}
+
+	@Override
+	public Coin showCoinMenu(Scanner sc) {
+		int result;		
+		System.out.println("PRESS 1: To Select TEN");
+		System.out.println("PRESS 2: To Select TWENTY");
+		System.out.println("PRESS 3: To Select FIFTY");
+		System.out.println("PRESS 3: To Select HUNDRED");
+		
+		result = sc.nextInt();
+		if(result == 1) {
+			return Coin.TEN;
+		}
+		else if(result == 2) {
+			return Coin.TWENTY;
+		}
+		else if(result == 3) {
+			return Coin.FIFTY;
+		}
+		else if(result == 3) {
+			return Coin.HUNDRED;
+		}
+		return null;
 	}
 
 
